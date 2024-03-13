@@ -1,10 +1,15 @@
 import React from 'react';
+import TopNav from './TopNav';
 
 const Home = () => {
   return (
-    <div>
-      this is the home page
-    </div>
+    <>
+      <TopNav />
+      <div>
+        This is the home page
+        Server side rendered
+      </div>
+    </>
   );
 };
 

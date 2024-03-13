@@ -1,11 +1,18 @@
-import { Stage, Layer, Circle } from 'react-konva';
+import { Stage, Layer, Text } from 'react-konva';
 
 function Canvas() {
   return (
-    <Stage width={window.innerWidth} height={window.innerHeight}>
+    <Stage width={800} height={500} containerProps={{ className: 'canvas' }}>
       <Layer>
-        <Circle x={200} y={100} radius={50} fill="red" />
-        <Circle x={550} y={100} radius={50} fill="green" />
+        <Text
+          draggable
+          text="Hello, React Konva!"
+          fontSize={30}
+          fontFamily="Arial"
+          fill="red"
+          x={20}
+          y={20}
+        />
       </Layer>
     </Stage>
   );
