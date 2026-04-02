@@ -167,12 +167,8 @@ function reducer(state: EditorState, action: Action): EditorState {
     case 'SET_CANVAS_SIZE':
       return { ...state, canvasSize: action.payload };
 
-    case 'PUSH_HISTORY': {
-      const snapshot: HistorySnapshot = { elements: state.elements, background: state.background };
-      const newHistory = state.history.slice(0, state.historyIndex + 1);
-      newHistory.push(snapshot);
-      return { ...state, history: newHistory, historyIndex: newHistory.length - 1 };
-    }
+    case 'PUSH_HISTORY':
+      return { ...state, ...pushHistory(state) };
 
     case 'UNDO': {
       if (state.historyIndex <= 0) return state;

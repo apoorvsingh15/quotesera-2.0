@@ -29,6 +29,21 @@ const FONTS = [
   'Raleway',
 ];
 
+/** Maps a CSS gradient direction string to a CSS angle string for use in linear-gradient(). */
+function gradientDirectionToDeg(direction: string): string {
+  const map: Record<string, string> = {
+    'to right': '90deg',
+    'to bottom': '180deg',
+    'to bottom right': '135deg',
+    'to bottom left': '225deg',
+    'to top right': '45deg',
+    'to top left': '315deg',
+    'to top': '0deg',
+    'to left': '270deg',
+  };
+  return map[direction] ?? '180deg';
+}
+
 const GRADIENT_PRESETS = [
   { label: 'Sunset', colors: ['#ff6b6b', '#feca57'], direction: 'to bottom right' },
   { label: 'Ocean', colors: ['#1a1a2e', '#0f3460'], direction: 'to bottom' },
@@ -316,7 +331,7 @@ export default function RightPanel() {
                 className="rounded-md border border-gray-200 hover:border-indigo-400 transition-all duration-150 cursor-pointer"
                 style={{
                   height: 36,
-                  background: `linear-gradient(${g.direction === 'to bottom right' ? '135deg' : '180deg'}, ${g.colors.join(', ')})`,
+                  background: `linear-gradient(${gradientDirectionToDeg(g.direction)}, ${g.colors.join(', ')})`,
                 }}
               />
             ))}
